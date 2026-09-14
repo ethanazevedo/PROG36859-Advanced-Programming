@@ -21,8 +21,8 @@ class Dog{
 
 int main(){
 
-    Dog d1("Jeffery Epstein", 67);
-    Dog d2("Victim", 1);
+    Dog d1("Jeffery", 67);
+    Dog d2("Joe", 1);
 
     cout << d1.getAge();
     d1.bark();
