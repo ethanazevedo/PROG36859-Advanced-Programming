@@ -22,9 +22,9 @@ using namespace std;
 - redefine standard operators behaviour, use with objects: +, -, *, <, =, >, <=, >=, ...
 - like magic method in python: __add/gt/eq/ne/lt__
 
-
-
 */
+
+
 class Pet {
     private: 
         int age;
