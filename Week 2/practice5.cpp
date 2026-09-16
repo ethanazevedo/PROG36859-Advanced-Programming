@@ -12,7 +12,6 @@ class Product{
     public:
         Product(string n, double regular, double sale){
 
-
             prices = new double[2];
 
             prices[0] = regular;
