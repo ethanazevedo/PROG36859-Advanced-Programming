@@ -10,7 +10,7 @@ class Product{
         double* prices;
         static double totalValue;
     public:
-        Product(string n, double regular, double sale){
+        Product(string n, double regular, double sale): name(n) {
 
             prices = new double[2];
 
