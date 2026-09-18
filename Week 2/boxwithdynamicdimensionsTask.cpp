@@ -69,7 +69,6 @@ int main(){
 
     Box b3(2, 3, 4);
 
-    Box b2(b1);  
     b2 = b1;
 
     cout << b1.volume() << endl;
