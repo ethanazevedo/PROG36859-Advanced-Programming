@@ -40,19 +40,54 @@ class Shape{
         virtual ~Shape(){
             nullptr;
         }
-
-        
-
-
 };
 
 // TODO#2 - Concrete subclass Triangle
 
+class Triangle : public Shape{
+    private: 
+        double base;
+        double height;
+    public:
+        Triangle(double b = 1.0, double h = 1.0, const string& t = "Triangle", 
+                    const string& c = "White"): base(b), height(h), Shape(t, c){};
+        double getArea() const override {
+            return 0.5 * base * height;
+        }
+        void printInfo() const override{
+            cout << "Type: " << Shape::type << ", Color: " << Shape::color << ", Base: " << base << ", Height: " << height << ", Area: " << getArea();
+        }
+};
+
 // TODO#3 - Concrete subclass Circle
+
+class Circle : public Shape{
+    private: 
+        double radius;
+    public: 
+        Circle(double r = 1.0, const string& t = "Circle", 
+                const string& c = "White"): radius(r), Shape(t, c){};
+
+        double getArea() const override {
+            return PI * radius * radius;
+        }
+        void printInfo() const override{
+            cout << "Type: " << Shape::type << ", Color: " << Shape::color << ", Radius: " << radius << ", Area: " << getArea();
+        }
+};
 
 int main() {
     // TODO#4.1 - Create a vector of 3 triangles
     //            Sort triangles by area and color
+
+    vector<Triangle> triangles = {
+        Triangle(5.0, 4.0, "Triangle", "Red"),
+        Triangle(3.0, 6.0, "Triangle", "Blue"),
+        Triangle(8.0, 2.0, "Triangle", "Green"),
+    };
+
+    
+
 
     // TODO#4.2 - Create a vector of 3 circles
     //            Sort circles by area and color
