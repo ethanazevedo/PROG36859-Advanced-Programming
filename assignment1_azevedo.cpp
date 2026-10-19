@@ -22,10 +22,12 @@ class Shape{
     public:
         Shape(const string& t = "None", const string& c = "None"): type(t), color(c){};
 
-        string getColor() const{
+        //Returns the color of the shape.
+        string getColor() const{ 
             return color;
         }
 
+        //Updates the color of the shape.
         void setColor(const string& newColor){
             color = newColor;
         }
@@ -33,10 +35,12 @@ class Shape{
         virtual double getArea() const = 0;
         virtual void printInfo() const = 0;
 
+        //comparing shapes based on area for sorting later.
         bool operator<(const Shape& other){
             return getArea() < other.getArea();
         }
 
+        //destructor
         virtual ~Shape(){
             nullptr;
         }
@@ -51,9 +55,13 @@ class Triangle : public Shape{
     public:
         Triangle(double b = 1.0, double h = 1.0, const string& t = "Triangle", 
                     const string& c = "White"): base(b), height(h), Shape(t, c){};
+        
+        // Calculates and returns the area of the triangle.
         double getArea() const override {
             return 0.5 * base * height;
         }
+
+        // Displays triangle info.
         void printInfo() const override{
             cout << "Type: " << Shape::type << ", Color: " << Shape::color 
             << ", Base: " << base << ", Height: " << height << ", Area: " << getArea() << endl;
@@ -69,9 +77,12 @@ class Circle : public Shape{
         Circle(double r = 1.0, const string& t = "Circle", 
                 const string& c = "White"): radius(r), Shape(t, c){};
 
+        // Calculates and returns the area of the circle.
         double getArea() const override {
             return PI * radius * radius;
         }
+
+        // Display circle info.
         void printInfo() const override{
             cout << "Type: " << Shape::type << ", Color: " << Shape::color 
             << ", Radius: " << radius << ", Area: " << getArea() << endl;
