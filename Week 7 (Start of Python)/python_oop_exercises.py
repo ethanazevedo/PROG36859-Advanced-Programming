@@ -4,18 +4,38 @@
 
 # TODO: Task class
 class Task:
-        
+    def __init__(self, name, difficulty):
+            self.name = name
+            self.difficulty = difficulty
+            self.done = False
+    
+    def __str__(self):
+        return f"Task: {self.name}\n\tDifficulty: {self.difficulty}\n\tDone: {self.done}"
+    
 
 # TODO: SuperHero class
 class SuperHero:
-    pass
+    def __init__(self, name, strength, skills):
+        self.name = name
+        self.strength = strength
+        self.skills = skills
+        self.tasks = []
+        
+    def assign_task(self, task):
+         self.tasks.append(task.name)
+
+    def complete_task(self, task):
+         task.done = True
+
+    def __str__(self):
+        return f"SuperHero: {self.name}\n\tStrength: {self.strength}\n\tSkills: {self.skills}\n\tTasks: {self.tasks}"
 
 # =============================================================================
 
 def test():
     print('==== TODO#1/4 ====')
     """
-    TODO#1/4
+    TODO1/4
     Write a Task class so that when running the test code below, the
           following output will be produced:
     Task: Save the world
@@ -32,7 +52,7 @@ def test():
 
     print('\n==== TODO#2/4 ====')
     """
-    TODO#2/4
+    TODO2/4
     Write a SuperHero class so that when running the test code below, the 
           following output will be produced:
     SuperHero: Spiderman
@@ -45,7 +65,7 @@ def test():
 
     print('\n==== TODO#3/4 ====')
     """
-    TODO#3/4
+    TODO3/4
     Add code to SuperHero class so that when running the test code
           below, the following output will be produced:
     SuperHero: Spiderman
@@ -59,7 +79,7 @@ def test():
 
     print('\n==== TODO#4/4 ====')
     """
-    TODO#4/4
+    TODO4/4
     Add more code to the two classes so that when running the test
           code below, the following output will be produced:
     SuperHero: Spiderman
