@@ -102,4 +102,26 @@ if __name__ == '__main__':
 # Exercise 2: write a dataclass Book that has the following attributes:
 #       title, author, isbn, publication year, genre
 #   Test the class.
+from dataclasses import dataclass
+@dataclass
+class Book:
+    title: str
+    author: str
+    isbn: str
+    publication_year: int
+    genre: str
 
+def main():
+    book1 = Book('1713', 'Ethan Azevedo', 
+                 '123456789', 1449, 'Monkey zoo')
+
+    book2 = Book('Finding the Island', 'Jackie Huang',
+                 '987654321', 1536, 'Entertainment and horror')
+
+    print('\n')
+    print(book1)
+    print('\n')
+    print(book2)
+    print('\n')
+
+main()
