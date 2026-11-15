@@ -10,6 +10,92 @@
 #       - grade: 'A', 'B', 'C', 'D', 'F' corresponds to marks 90-100, 80-89, 70-79, 60-69, 0-59    
 
 
+class Student:
+    def __init__(self, sid, name, marks):
+        self.sid = sid
+        self.name = name
+        self.marks = marks
+
+    def __str__(self):
+        return f'{self.sid} {self.name} {self.marks}'
+
+
+def read_students():
+    students = []
+
+    for i in range(3):
+        sid = int(input('Enter student ID: '))
+        name = input('Enter student name: ')
+        marks = float(input('Enter student marks: '))
+
+        s = Student(sid, name, marks)
+        students.append(s)
+
+    return students
+
+
+def calculate_marks(students):
+    marks = [s.marks for s in students]
+
+    average = sum(marks) / len(marks)
+    minimum = min(marks)
+    maximum = max(marks)
+
+    return average, minimum, maximum
+
+
+def create_dictionaries(students):
+    grade_students = {}
+    name_grade = {}
+
+    for s in students:
+        if s.marks >= 90:
+            grade = 'A'
+        elif s.marks >= 80:
+            grade = 'B'
+        elif s.marks >= 70:
+            grade = 'C'
+        elif s.marks >= 60:
+            grade = 'D'
+        else:
+            grade = 'F'
+
+        if grade not in grade_students:
+            grade_students[grade] = []
+
+        grade_students[grade].append(s)
+        name_grade[s.name] = grade
+
+    return grade_students, name_grade
+
+
+def main():
+    students = read_students()
+
+    average, minimum, maximum = calculate_marks(students)
+
+    print('\n==== Marks Summary ====')
+    print('Average:', average)
+    print('Minimum:', minimum)
+    print('Maximum:', maximum)
+
+    grade_students, name_grade = create_dictionaries(students)
+
+    print('\n==== Grade: Students ====')
+    for grade, students in grade_students.items():
+        print(grade, ':')
+        for s in students:
+            print(' ', s)
+
+    print('\n==== Name: Grade ====')
+    for name, grade in name_grade.items():
+        print(name, ':', grade)
+
+
+main()
+
+
+
 # Exercise: write a Python program to process your own marks obtained in all tests of all subjects. 
 #   - Write the following two functions. 
 #   - Function 1: create_gradebook: this function will read a few subject names, and for each subject, 
@@ -25,12 +111,60 @@
 #       Note: there can be some test types that have no score, for example no exam has been done.
 #   - Note: Use dictionary instead of list. Do not use any global variables
 def create_gradebook():
-    # TODO
-    pass
+    gradebook = {}
+
+    subject = input('= Enter subject name: ')
+
+    while subject != 'done':
+        tests = {}
+
+        test = input('- Enter test name and score: ')
+
+        while test != 'done':
+            name, score = test.split()
+            tests[name] = float(score)
+
+            test = input('- Enter test name and score: ')
+
+        gradebook[subject] = tests
+
+        subject = input('= Enter subject name: ')
+
+    return gradebook
 
 def print_averages(my_gradebook):
-    # TODO
-    pass
+    print('\n==== Summary ====')
+
+    types = ['lab', 'quiz', 'asgn', 'exam']
+
+    totals = {'lab': 0, 'quiz': 0, 'asgn': 0, 'exam': 0}
+    counts = {'lab': 0, 'quiz': 0, 'asgn': 0, 'exam': 0}
+
+    for subject in my_gradebook:
+        total = 0
+        count = 0
+
+        for test, score in my_gradebook[subject].items():
+            total += score
+            count += 1
+
+            for t in types:
+                if test.startswith(t):
+                    totals[t] += score
+                    counts[t] += 1
+
+        average = total / count
+        print(f'Subject  : {subject:15} Average: {average:.2f}')
+
+    print()
+
+    for t in types:
+        if counts[t] > 0:
+            average = totals[t] / counts[t]
+        else:
+            average = 0
+
+        print(f'Test Type: {t:15} Average: {average:.2f}')
 
 '''
     Expected output:
