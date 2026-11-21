@@ -1,4 +1,9 @@
-# Group members: 
+# Names: Ethan Azevedo, Simon Clifford, Lucas Mahler
+# Class: PROG36859
+# Assignment: Assignment #2
+# Date: November 23rd, 2026
+# Program: assignment2_azevedo.py
+
 
 # 1. Check the provided class diagrams
 # 2. Finish the 5 required classes
